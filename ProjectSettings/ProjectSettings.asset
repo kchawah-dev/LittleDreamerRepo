@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Day Dreamer Interactive
+  companyName: Day Dream Interactive
   productName: LittleDreamer
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
