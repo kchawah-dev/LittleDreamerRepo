@@ -3,27 +3,33 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     public float speed = 2f;
-    public Transform groundCheck;
-    public float groundDistance = 1f;
-    public LayerMask groundLayer;
+    public Transform leftPoint;
+    public Transform rightPoint;
 
     private bool movingRight = true;
 
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundCheck.position, Vector2.down, groundDistance, groundLayer);
-
-        if (groundInfo.collider == false)
+        if (movingRight)
         {
-            Flip();
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            if (transform.position.x > rightPoint.position.x)
+                movingRight = false;
+        }
+        else
+        {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            if (transform.position.x < leftPoint.position.x)
+                movingRight = true;
         }
     }
 
-    void Flip()
+    void OnDrawGizmosSelected()
     {
-        movingRight = !movingRight;
-        transform.Rotate(0f, 180f, 0f);
+        Gizmos.color = Color.red;
+        if (leftPoint != null && rightPoint != null)
+        {
+            Gizmos.DrawLine(leftPoint.position, rightPoint.position);
+        }
     }
 }
