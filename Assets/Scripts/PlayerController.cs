@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Needed for restart
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
-        // UpdateAnimator(); // No longer needed for jump trigger
     }
 
     void Move()
@@ -52,13 +52,36 @@ public class PlayerController : MonoBehaviour
             if (isGrounded)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                animator.SetTrigger("Jump"); // Use trigger
+                animator.SetTrigger("Jump");
             }
             else if (canDoubleJump)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 canDoubleJump = false;
-                animator.SetTrigger("Jump"); // Use trigger
+                animator.SetTrigger("Jump");
+            }
+        }
+    }
+
+    // Stomp Logic
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Get the first contact point
+            ContactPoint2D contact = collision.contacts[0];
+
+            // Check if the player hit the enemy from above
+            if (contact.normal.y > 0.5f)
+            {
+                // Stomp success!
+                Destroy(collision.gameObject);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * 0.75f); // Bounce upward
+            }
+            else
+            {
+                // Hit from side or below → restart level
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }

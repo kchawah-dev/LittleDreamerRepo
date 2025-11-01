@@ -5,31 +5,28 @@ public class EnemyPatrol : MonoBehaviour
     public float speed = 2f;
     public Transform leftPoint;
     public Transform rightPoint;
-
     private bool movingRight = true;
 
-    void Update()
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
     {
         if (movingRight)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
             if (transform.position.x > rightPoint.position.x)
                 movingRight = false;
         }
         else
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
             if (transform.position.x < leftPoint.position.x)
                 movingRight = true;
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        if (leftPoint != null && rightPoint != null)
-        {
-            Gizmos.DrawLine(leftPoint.position, rightPoint.position);
         }
     }
 }
