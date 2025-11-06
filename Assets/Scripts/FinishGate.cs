@@ -18,7 +18,7 @@ public class FinishGate : MonoBehaviour
             // Optionally freeze player movement before scene transition
             var rb = other.GetComponent<Rigidbody2D>();
             if (rb != null)
-                rb.velocity = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
 
             // Load the Level Complete scene
             SceneManager.LoadScene(levelCompleteScene);

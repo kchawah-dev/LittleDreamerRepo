@@ -13,7 +13,7 @@ public class EnemyDefeat : MonoBehaviour
 
             // Add a small bounce to the player
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(rb.velocity.x, 10f);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 10f);
 
             // Optional: spawn effect
             if (deathEffect != null)
