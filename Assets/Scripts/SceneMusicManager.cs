@@ -7,10 +7,12 @@ public class SceneMusicManager : MonoBehaviour
 
     [Header("Music Tracks")]
     public AudioClip titleMusic;
-    public AudioClip desertLevelMusic;  // Level 1-1
-    public AudioClip oceanLevelMusic;   // Level 1-2
-    public AudioClip spaceLevelMusic;   // Level 1-3
-    public AudioClip victoryJingle;     // LevelComplete
+    public AudioClip levelSelectMusic;   // NEW — Level Select screen
+    public AudioClip desertLevelMusic;   // Level 1-1
+    public AudioClip oceanLevelMusic;    // Level 1-2
+    public AudioClip spaceLevelMusic;    // Level 1-3
+    public AudioClip victoryJingle;      // LevelComplete only
+    public AudioClip gameCompleteMusic;  // NEW — GameComplete screen
 
     [Header("Audio Settings")]
     [Range(0f, 1f)]
@@ -55,6 +57,10 @@ public class SceneMusicManager : MonoBehaviour
                 newClip = titleMusic;
                 break;
 
+            case "LevelSelect":
+                newClip = levelSelectMusic;
+                break;
+
             case "Level 1-1":
                 newClip = desertLevelMusic;
                 break;
@@ -68,13 +74,17 @@ public class SceneMusicManager : MonoBehaviour
                 break;
 
             case "LevelComplete":
+                newClip = victoryJingle;
+                shouldLoop = false;
+                break;
+
             case "GameComplete":
-            newClip = victoryJingle;
-            shouldLoop = false;
+                newClip = gameCompleteMusic;
+                shouldLoop = false;
                 break;
 
             default:
-                newClip = null; // No music for other scenes
+                newClip = null;
                 break;
         }
 

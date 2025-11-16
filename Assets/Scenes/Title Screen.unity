@@ -149,9 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusicManager
   titleMusic: {fileID: 8300000, guid: 380450127ef2464469bd8403c544c48e, type: 3}
-  desertLevelMusic: {fileID: 0}
-  oceanLevelMusic: {fileID: 0}
-  spaceLevelMusic: {fileID: 0}
+  desertLevelMusic: {fileID: 8300000, guid: 69784c7179f79d8459d81f61c2dabe66, type: 3}
+  oceanLevelMusic: {fileID: 8300000, guid: e6d87909c1b53194898f97ae2cfb0999, type: 3}
+  spaceLevelMusic: {fileID: 8300000, guid: 51950b8c8852aa2449f329771c35fc0b, type: 3}
   victoryJingle: {fileID: 8300000, guid: 0e555eb670a389843b5b760eb39da190, type: 3}
   musicVolume: 0.5
 --- !u!4 &212591386
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1949751724}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1949751724}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -1101,6 +1101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1949751723}
+  - component: {fileID: 1949751724}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1123,6 +1124,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949751724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949751722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec771ff599e17840a6e62651b80a27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
 --- !u!1 &1963975079
 GameObject:
   m_ObjectHideFlags: 0
