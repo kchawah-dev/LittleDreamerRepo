@@ -15,7 +15,11 @@ public class FinishGate : MonoBehaviour
             levelFinished = true;
             Debug.Log("Level Complete! Loading Level Complete screen...");
 
-            // Optionally freeze player movement before scene transition
+            // Save the current level name as LastLevel
+            PlayerPrefs.SetString("LastLevel", SceneManager.GetActiveScene().name);
+            PlayerPrefs.Save();  // optional but recommended
+
+            // Freeze player movement
             var rb = other.GetComponent<Rigidbody2D>();
             if (rb != null)
                 rb.linearVelocity = Vector2.zero;
