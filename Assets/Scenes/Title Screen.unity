@@ -149,7 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusicManager
   titleMusic: {fileID: 8300000, guid: 380450127ef2464469bd8403c544c48e, type: 3}
-  levelMusic: {fileID: 8300000, guid: 69784c7179f79d8459d81f61c2dabe66, type: 3}
+  desertLevelMusic: {fileID: 0}
+  oceanLevelMusic: {fileID: 0}
+  spaceLevelMusic: {fileID: 0}
   victoryJingle: {fileID: 8300000, guid: 0e555eb670a389843b5b760eb39da190, type: 3}
   musicVolume: 0.5
 --- !u!4 &212591386

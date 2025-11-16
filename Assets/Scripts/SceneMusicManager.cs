@@ -7,12 +7,14 @@ public class SceneMusicManager : MonoBehaviour
 
     [Header("Music Tracks")]
     public AudioClip titleMusic;
-    public AudioClip levelMusic;
-    public AudioClip victoryJingle;
+    public AudioClip desertLevelMusic;  // Level 1-1
+    public AudioClip oceanLevelMusic;   // Level 1-2
+    public AudioClip spaceLevelMusic;   // Level 1-3
+    public AudioClip victoryJingle;     // LevelComplete
 
     [Header("Audio Settings")]
     [Range(0f, 1f)]
-    public float musicVolume = 1f; // Adjustable volume between 0 (mute) and 1 (max)
+    public float musicVolume = 1f;
 
     private AudioSource audioSource;
 
@@ -51,17 +53,28 @@ public class SceneMusicManager : MonoBehaviour
         {
             case "Title Screen":
                 newClip = titleMusic;
-                shouldLoop = true;
                 break;
 
             case "Level 1-1":
-                newClip = levelMusic;
-                shouldLoop = true;
+                newClip = desertLevelMusic;
+                break;
+
+            case "Level 1-2":
+                newClip = oceanLevelMusic;
+                break;
+
+            case "Level 1-3":
+                newClip = spaceLevelMusic;
                 break;
 
             case "LevelComplete":
-                newClip = victoryJingle;
-                shouldLoop = false;
+            case "GameComplete":
+            newClip = victoryJingle;
+            shouldLoop = false;
+                break;
+
+            default:
+                newClip = null; // No music for other scenes
                 break;
         }
 
@@ -70,14 +83,13 @@ public class SceneMusicManager : MonoBehaviour
             audioSource.Stop();
             audioSource.clip = newClip;
             audioSource.loop = shouldLoop;
-            audioSource.volume = musicVolume; // Apply current volume
+            audioSource.volume = musicVolume;
             audioSource.Play();
         }
     }
 
     private void Update()
     {
-        // Update volume in real-time if changed in Inspector or via script
         audioSource.volume = musicVolume;
     }
 
