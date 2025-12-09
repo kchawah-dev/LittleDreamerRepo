@@ -7,12 +7,12 @@ public class SceneMusicManager : MonoBehaviour
 
     [Header("Music Tracks")]
     public AudioClip titleMusic;
-    public AudioClip levelSelectMusic;   // NEW — Level Select screen
+    public AudioClip levelSelectMusic;   // Level Select screen
     public AudioClip desertLevelMusic;   // Level 1-1
     public AudioClip oceanLevelMusic;    // Level 1-2
     public AudioClip spaceLevelMusic;    // Level 1-3
-    public AudioClip victoryJingle;      // LevelComplete only
-    public AudioClip gameCompleteMusic;  // NEW — GameComplete screen
+    public AudioClip victoryJingle;      // USED BY LevelComplete & GameComplete
+    public AudioClip failureJingle;      // GameOver jingle
 
     [Header("Audio Settings")]
     [Range(0f, 1f)]
@@ -73,13 +73,16 @@ public class SceneMusicManager : MonoBehaviour
                 newClip = spaceLevelMusic;
                 break;
 
+            // BOTH completion screens use the SAME victory jingle
             case "LevelComplete":
+            case "GameComplete":
                 newClip = victoryJingle;
                 shouldLoop = false;
                 break;
 
-            case "GameComplete":
-                newClip = gameCompleteMusic;
+            // Game Over uses Failure Jingle
+            case "GameOver":
+                newClip = failureJingle;
                 shouldLoop = false;
                 break;
 
